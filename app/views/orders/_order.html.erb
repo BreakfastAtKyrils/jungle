@@ -1,0 +1,20 @@
+<% @order.line_items.each do |order_item| %>
+  <tr>
+    <td>
+      <%= order_item.product.name %>
+    </td>
+    <td>
+      <%= order_item.product.description %>
+    </td>
+    <td>
+    <%= image_tag(order_item.product.image.url, height: '320', width: '320') %>
+    
+  </td>
+    <td>
+      <%= order_item.quantity %>
+    </td>
+    <td>
+      <%= order_item.quantity * order_item.product.price %>
+    </td>
+  </tr>
+  <% end %>
