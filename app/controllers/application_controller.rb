@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
+  protected
+  def authenticate
+    http_basic_authenticate_or_request_with name: ENV["HTTP_BASIC_USER"], password: ENV["HTTP_BASIC_PASSWORD"]
+  end
 
   def cart
     @cart ||= cookies[:cart].present? ? JSON.parse(cookies[:cart]) : {}
